@@ -213,6 +213,5 @@ def clear_history():
         return jsonify({"status": "error", "message": f"刪除失敗: {e}"}), 500
 
 if __name__ == "__main__":
-    # Render 環境動態分配 PORT，本地環境預設 5000
     port = int(os.getenv("PORT", 5000))
-    socketio.run(app, host="0.0.0.0", port=port)
+    socketio.run(app, host="0.0.0.0", port=port, allow_unsafe_werkzeug=True)
